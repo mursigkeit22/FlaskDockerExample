@@ -1,0 +1,5 @@
+#!/bin/bash
+docker build -t hub.local/rocketbot:local -f Dockerfile .
+docker stop rocketbot && docker rm rocketbot
+docker run -d -p3002:3002 -v /home/vshelgunova/tagbot/tagbot.log/:/home/vshelgunova/tagbot/tagbot.log/ --restart unless-stopped --name rocketbot hub.local/rocketbot:local
+
